@@ -59,6 +59,7 @@ class Game:
         :param coordinate_shot: Coordonnée du tir
         :return: Le bateau touché ou None si le tir est manqué.
         """
+        self.shots.append(coordinate_shot)
         for boat in self.boats:
             if boat.contains(coordinate_shot):
                 boat.hit(coordinate_shot)
