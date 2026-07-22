@@ -75,3 +75,23 @@ class Game:
         :return: True si tous les bateaux sont coulés, False sinon.
         """
         return all(boat.is_sunk() for boat in self.boats)
+
+    def play(self) -> None:
+        """
+        Lance et exécute une partie de bataille navale jusqu'à que tous les bateaux soient coulés.
+        """
+        self.grid.show_grid()
+
+        while not self.is_game_over():
+            shot = self.ask_shot()
+            boat = self.check_shot(shot)
+
+            self.grid.update(shot, boat is not None)
+
+            if boat is not None and boat.is_sunk():
+                print(f"{boat.name} : Coulé! ")
+                self.grid.mark_sunk(boat)
+
+            self.grid.show_grid()
+
+        print("Bravo, tous les bateaux sont coulés.")
