@@ -12,5 +12,7 @@ for boat in boats:
     print(f"{boat.name} : {boat.positions}")
 
 grid_game = Grid()
-print(grid_game.cells)
-
+grid_game.show_grid()
+grid_game.update("B2", True)
+grid_game.update("A1", False)
+grid_game.show_grid()

@@ -26,3 +26,13 @@ class Grid:
             self.cells[row_index][column_index] = "O"
         else:
             self.cells[row_index][column_index] = "X"
+
+    def show_grid(self) -> None:
+        """
+        Affiche la grille de jeu avec en-têtes des colonnes et lignes.
+        """
+        print("   A B C D E F G H I J")
+        for index, row in enumerate(self.cells):  # permet d'avoir le numéro de la ligne index+1 et ligne elle-même
+            print(f"{index + 1:2} {' '.join(row)}")
+            # dans les f string :2 permet de réserver deux caractères pour aligner
+
