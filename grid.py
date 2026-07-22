@@ -1,11 +1,12 @@
 class Grid:
-    """
-    Initialise une grille de jeu vide de 10 lignes et 10 colonnes.
-    """
+
     def __init__(self) -> None:
-        self.grid: list[list[str]] = []
+        """
+        Initialise une grille de jeu vide de 10 lignes et 10 colonnes.
+        """
+        self.cells: list[list[str]] = []
         for _ in range(10):
-            row = []
+            row: list[str] = []
             for _ in range(10):
                 row.append(".")
-            self.grid.append(row)
+            self.cells.append(row)
