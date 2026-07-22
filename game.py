@@ -67,3 +67,10 @@ class Game:
         print("Manqué! ")
         self.misses.append(coordinate_shot)
         return None
+
+    def is_game_over(self) -> bool:
+        """
+        Vérifie si tous les bateaux sont coulés.
+        :return: True si tous les bateaux sont coulés, False sinon.
+        """
+        return all(boat.is_sunk() for boat in self.boats)
