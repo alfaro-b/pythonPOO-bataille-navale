@@ -7,14 +7,27 @@ class Boat:
         """
         self.name: str = name
         self.positions: tuple[str, ...] = positions
+        self.hits: list[str] = []
 
-    def is_sunk(self, hit_shots) -> bool:
+    def contains(self, shot: str) -> bool:
         """
-        Indique si le bateau est coulé,
-        c'est-à-dire lorsque toutes les cases qu'il occupe sont touchées.
-        :param hit_shots: Liste des coordonnées touchées.
+        Vérifie si une coordonnée appartient au bateau.
+        :param shot: Coordonnée du tir.
+        :return: True si le bateau occupe la case, False sinon.
+        """
+        return shot in self.positions
+
+    def hit(self, shot: str) -> None:
+        """
+        Enregistre un tir sur le bateau si la coordonnée lui appartient et n'a pas déjà été touchée.
+        :param shot: Coordonnées du tir.
+        """
+        if self.contains(shot) and shot not in self.hits:
+            self.hits.append(shot)
+
+    def is_sunk(self) -> bool:
+        """
+        Indique si toutes les cases du bateau ont été touchées.
         :return: True si le bateau est coulé, False sinon.
         """
-        if all(position in hit_shots for position in self.positions):
-            return True
-        return False
+        return len(self.hits) == len(self.positions)
