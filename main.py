@@ -1,18 +1,14 @@
-from boat import Boat
-from grid import Grid
+from game import Game
 
-boats = [
-    Boat("Aircraft carrier", ("B2", "C2", "D2", "E2", "F2")),
-    Boat("Cruiser", ("A4", "A5", "A6", "A7")),
-    Boat("Destroyer", ("C5", "C6", "C7")),
-    Boat("Submarine", ("H5", "I5", "J5")),
-    Boat("Torpedo boat", ("E9", "F9"))
-]
-for boat in boats:
-    print(f"{boat.name} : {boat.positions}")
 
-grid_game = Grid()
-grid_game.show_grid()
-grid_game.update("B2", True)
-grid_game.update("A1", False)
-grid_game.show_grid()
+def main() -> None:
+    """
+    Lance une partie de bataille navale.
+    """
+    game = Game()
+    game.play()
+
+
+if __name__ == '__main__':
+    main()
+
