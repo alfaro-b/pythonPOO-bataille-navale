@@ -1,5 +1,6 @@
 from boat import Boat
 
+
 class Grid:
 
     def __init__(self) -> None:
@@ -49,4 +50,3 @@ class Grid:
             column_index = ord(column) - ord('A')
             row_index = row - 1
             self.cells[row_index][column_index] = "C"
-
