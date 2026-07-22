@@ -52,3 +52,18 @@ class Game:
                 continue
 
             return coordinate_shot
+
+    def check_shot(self, coordinate_shot: str) -> Boat | None:
+        """
+        Vérifie si un tir touche un bateau.
+        :param coordinate_shot: Coordonnée du tir
+        :return: Le bateau touché ou None si le tir est manqué.
+        """
+        for boat in self.boats:
+            if boat.contains(coordinate_shot):
+                boat.hit(coordinate_shot)
+                print("Touché! ")
+                return boat
+        print("Manqué! ")
+        self.misses.append(coordinate_shot)
+        return None
